@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Us | Space Explorer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* Space Background */
+        body {
+            background: url('contact2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            min-height: 100vh;
+            margin: 0;
+            color: white;
+        }
+
+        /* Slight Blur Effect */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 50, 0.5);
+            backdrop-filter: blur(8px);
+            z-index: -1;
+        }
+
+        /* Contact Form Container */
+        .contact-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Astronaut Image */
+        .astronaut-img {
+            max-width: 80%;
+            filter: brightness(1.2);
+            animation: float 3s infinite alternate ease-in-out;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Google Maps Section */
+        .map-section {
+            background: url('earthmap.jpeg') no-repeat center center;
+            background-size: cover;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: url('space2.jpg') no-repeat center;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🚀 Space Explorer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Form -->
+    <div class="container contact-container mt-5">
+        <h2 class="text-center">Get in Touch</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <form>
+                    <input type="text" class="form-control mb-3" placeholder="Your Name">
+                    <input type="email" class="form-control mb-3" placeholder="Your Email">
+                    <textarea class="form-control mb-3" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn-primary d-block mx-auto">Send Message</button>
+                </form>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="astronaut.jpeg" alt="Astronaut Communicating" class="img-fluid astronaut-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Maps Embed Section -->
+    <div class="container mt-4 map-section">
+        <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border:0;"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Space Explorer 🚀</p>
+    </footer>
+
+</body>
+</html>
