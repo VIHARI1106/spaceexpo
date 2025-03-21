@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gallery | Space Explorer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: radial-gradient(ellipse at bottom, #050505, black);
+            z-index: -1;
+        }
+        nav, footer {
+            position: relative;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.85);
+        }
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .modal-body p {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🚀 Space Explorer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container text-center mt-5">
+        <h2>🚀 Space Gallery</h2>
+        <p>Explore the wonders of the universe with stunning images from NASA.</p>
+    </div>
+    
+    <div class="container mt-4">
+        <div class="row gallery" id="galleryGrid"></div>
+    </div>
+    
+    <footer class="text-center p-3 mt-auto">© 2025 Space Explorer 🚀</footer>
+    
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" class="img-fluid" alt="">
+                    <p id="modalDescription" class="mt-2"></p>
+                    <p id="modalContent" class="mt-2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const images = [
+                { src: "gallery1.jpg", title: "The Milky Way Galaxy", desc: "A stunning view of our home galaxy, captured from deep space.", content: "The Milky Way is a barred spiral galaxy, home to our Solar System. It contains billions of stars, planets, and other celestial objects, stretching about 100,000 light-years in diameter." },
+                { src: "gallery2.jpg", title: "The International Space Station", desc: "An orbiting laboratory that circles Earth at 28,000 km/h.", content: "The ISS serves as a microgravity and space environment research laboratory. Astronauts conduct scientific experiments in fields such as biology, physics, and astronomy." },
+                { src: "gallery3.jpg", title: "The Pillars of Creation", desc: "A breathtaking structure in the Eagle Nebula, full of star-forming gas.", content: "These towering columns of interstellar gas and dust are located in the Eagle Nebula, about 7,000 light-years from Earth. They are a stellar nursery where new stars are forming." },
+                { src: "gallery4.jpg", title: "A Martian Sunset", desc: "A rare sight of a blue sunset on Mars, captured by NASA's rovers.", content: "Martian sunsets appear blue due to the way fine dust in the atmosphere scatters sunlight. This unique phenomenon is in contrast to Earth's red and orange sunsets." },
+                { src: "gallery5.jpg", title: "Saturn's Rings", desc: "The iconic and mysterious rings of Saturn, made mostly of ice and rock.", content: "Saturn's rings are composed primarily of ice particles, ranging in size from tiny grains to massive chunks. They are believed to be remnants of comets or moons torn apart by Saturn's gravity." },
+                { src: "gallery6.jpg", title: "A Supernova Explosion", desc: "The final, dramatic explosion of a dying massive star.", content: "Supernovae are among the most energetic events in the universe. They play a crucial role in enriching the cosmos with heavy elements essential for planet and life formation." }
+            ];
+            
+            document.getElementById("galleryGrid").innerHTML = images.map((img, i) => `
+                <div class="col-md-4 mb-4">
+                    <img src="${img.src}" class="img-thumbnail" alt="${img.title}" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('${img.src}', '${img.title}', \`${img.desc}\`, \`${img.content}\`)">
+                </div>
+            `).join('');
+        });
+        
+        function openModal(src, title, desc, content) {
+            document.getElementById("modalImage").src = src;
+            document.getElementById("modalTitle").textContent = title;
+            document.getElementById("modalDescription").textContent = desc;
+            document.getElementById("modalContent").textContent = content;
+        }
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
